@@ -11,7 +11,6 @@ class Main extends Component {
         dishes: DISHES,
         selectedDish: null
       };
-    };
   }
 
   onDishSelect(dishId) {
@@ -21,7 +20,10 @@ class Main extends Component {
   render() {
  
     return (
-        <Menu dishes={this.state.dishes} />
+        <View style={{flex:1}}>
+            <Menu dishes={this.state.dishes} onPress={(dishId) => this.onDishSelect(dishId)} />
+            <Dishdetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+        </View>
     );
   }
 }
